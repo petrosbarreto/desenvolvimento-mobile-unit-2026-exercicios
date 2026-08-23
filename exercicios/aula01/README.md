@@ -1,177 +1,142 @@
-# Exercício — Aula 01: O Ecossistema Mobile e o Lugar do Flutter
+## Parte A — Análise de apps reais
 
-**Disciplina:** Desenvolvimento Mobile (`F105880`) — UNIT 2026
-**Professor:** Petros Barreto
-**Entrega:** até a véspera da Aula 02 — PR `[Aula 01] Seu Nome Completo`
+## App 1 – Spotify
 
-> Esta primeira lista **não tem código**. Ela é de análise e preparação de
-> ambiente — e a Parte D é o que vai fazer a Aula 02 render.
-
----
-
-## Parte A — Análise de apps reais (30 pontos)
-
-Escolha **três apps** que você usa no celular. Pelo menos um deve ser brasileiro
-e pelo menos um internacional.
-
-Para cada app, preencha a ficha:
-
-```markdown
-### App: <nome>
-
-| Item | Resposta |
-|---|---|
-| Categoria | banco / delivery / rede social / ... |
-| A rolagem é fluida ou engasga? | |
-| A aparência é igual à de outros apps do Android? | |
-| Funciona em modo avião? O que ainda dá para fazer? | |
-| Abordagem que eu **chuto** | nativo / WebView / React Native / Flutter |
-| Evidência do meu chute | (ver abaixo) |
-```
-
-**A1 (18 pts).** As três fichas preenchidas — 6 pontos cada.
-
-**A2 (7 pts).** Para cada app, apresente **uma evidência concreta** do seu
-palpite sobre a abordagem. Vale:
-
-- print das **Opções do desenvolvedor → Mostrar limites de layout** (apps
-  Flutter têm um padrão de retângulos característico);
-- consulta ao <https://appbrain.com/stats/libraries/tag/framework>;
-- notícia ou post de engenharia da própria empresa;
-- inspeção do APK (avançado): presença de `libflutter.so` ou `libhermes.so`.
-
-**A3 (5 pts).** **O teste do modo avião.** Ative o modo avião e use os três apps
-por 2 minutos cada. Responda: qual deles se comporta melhor sem rede, e **o que
-exatamente** ele faz de diferente? (Isto é *offline-first*, e é o coração do
-projeto Checkpoint.)
+| Item                                               | Resposta                                                                                                                                                                                       |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Categoria                                          | Streaming de música                                                                                                                                                                            |
+| A rolagem é fluida ou engasga?                     | Fluida. A interface apresenta boa responsividade e poucas travadas durante o uso.                                                                                                              |
+| A aparência é igual à de outros apps do Android?   | Não. O Spotify possui identidade visual própria e uma interface personalizada.                                                                                                                 |
+| Funciona em modo avião? O que ainda dá para fazer? | Parcialmente. Usuários Premium conseguem reproduzir músicas baixadas. Algumas informações podem aparecer por cache, mas buscas e conteúdos online deixam de funcionar.                         |
+| Abordagem que eu chuto                             | Nativo                                                                                                                                                                                         |
+| Evidência do meu chute                             | ![Evidência Spotify](prints/Spotify.jpg) |
 
 ---
 
-## Parte B — Escolhendo a abordagem (30 pontos)
+## App 2 – Nubank
 
-Para cada cenário, escolha **uma** abordagem e **justifique em 2 a 4 frases**.
-Não existe resposta única — existe justificativa boa e ruim.
-
-| # | Cenário | Pts |
-|---|---|---|
-| B1 | Startup com 2 devs, 3 meses de prazo, precisa lançar em Android e iOS | 5 |
-| B2 | App de edição de vídeo com filtros aplicados em tempo real | 5 |
-| B3 | Portal de notícias de um jornal que já tem site responsivo | 5 |
-| B4 | App bancário com biometria e certificado armazenado no aparelho | 5 |
-| B5 | App interno de uma empresa, só Android, 200 funcionários em campo sem internet | 5 |
-| B6 | Jogo 2D casual com física e placar online | 5 |
-
-**Sua justificativa precisa considerar pelo menos três destes fatores:**
-prazo · tamanho e experiência da equipe · exigência de desempenho · acesso a
-hardware · quanto o visual precisa ser "da plataforma" · custo de manutenção
-a longo prazo · disponibilidade de contratação no mercado local.
-
-⚠️ **Atenção:** responder "Flutter" nos seis zera metade da parte. Em **B2** e
-**B4** há argumentos fortes para nativo — se você escolher Flutter neles, a
-justificativa precisa **enfrentar** esses argumentos, não ignorá-los.
+| Item                                               | Resposta                                                                                                                                                                                                                                                                                                   |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Categoria                                          | Banco digital                                                                                                                                                                                                                                                                                              |
+| A rolagem é fluida ou engasga?                     | Fluida. O aplicativo apresenta boa performance e animações suaves.                                                                                                                                                                                                                                         |
+| A aparência é igual à de outros apps do Android?   | Não. O Nubank possui uma identidade visual própria e uma experiência semelhante entre Android e iOS.                                                                                                                                                                                                       |
+| Funciona em modo avião? O que ainda dá para fazer? | Parcialmente. Algumas informações carregadas anteriormente podem aparecer, mas operações financeiras precisam de internet.                                                                                                                                                                                 |
+| Abordagem que eu chuto                             | Flutter + código nativo (híbrido)                                                                                                                                                                                                                                                                          |
+| Evidência do meu chute                             | O Nubank publicou artigos de engenharia informando o uso do Flutter para acelerar o desenvolvimento de novos recursos, mantendo integração com código nativo existente. Fonte: https://building.nubank.com/pt-br/por-que-achamos-que-o-flutter-vai-nos-ajudar-a-escalar-o-desenvolvimento-movel-no-nubank/ |
 
 ---
 
-## Parte C — Pesquisa: migrações reais (20 pontos)
+## App 3 – Cifra Club
 
-**C1 (12 pts).** Encontre **dois casos** documentados de empresas que migraram
-para Flutter. Para cada um, em ~8 linhas:
-
-- que stack usavam antes e por que migraram;
-- que ganho **mensurável** relataram (tempo de build, tamanho da equipe,
-  tempo de entrega, desempenho, ...);
-- que dificuldade relataram na migração;
-- **a fonte** (link para post de engenharia, palestra ou estudo de caso).
-
-*Sugestões de onde procurar: blogs de engenharia da Nubank, iFood, Banco Inter,
-BMW, eBay, Alibaba, Google Pay; canal Flutter no YouTube; Flutter Case Studies.*
-
-**C2 (8 pts).** Encontre **um caso** de empresa que **abandonou** uma stack
-cross-platform e voltou para nativo (Airbnb com React Native é o mais
-documentado). Responda:
-
-- quais foram as razões alegadas?
-- essas razões se aplicariam também ao Flutter? Por quê?
-- o que esse caso ensina sobre **quando não** usar cross-platform?
-
-⚠️ **Sem fonte, o item vale zero.** Cite o link.
+| Item                                               | Resposta                                                                                                                                                     |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Categoria                                          | Música / Educação musical                                                                                                                                    |
+| A rolagem é fluida ou engasga?                     | Fluida.                                                                                                                                                      |
+| A aparência é igual à de outros apps do Android?   | Não. Possui interface própria e elementos personalizados.                                                                                                    |
+| Funciona em modo avião? O que ainda dá para fazer? | Algumas cifras salvas ou carregadas podem continuar disponíveis, porém pesquisas, vídeos e conteúdos online dependem de conexão.                             |
+| Abordagem que eu chuto                             | Nativo                                                                                                                                                       |
+| Evidência do meu chute                             | ![Evidência Cifra Club](prints/CifraClub.jpg)|
 
 ---
 
-## Parte D — Preparação do ambiente (20 pontos)
+### Teste do modo avião
 
-Esta parte é o que faz a Aula 02 render. Faça **antes** da aula.
+Dos três aplicativos analisados, o Spotify apresentou o melhor funcionamento sem internet. Ele consegue continuar reproduzindo músicas baixadas e utiliza armazenamento local para manter parte da experiência disponível. Já o Nubank e o Cifra Club possuem mais dependência da conexão para acessar suas principais funcionalidades.
 
-**D1 (10 pts).** Baixe (não precisa instalar ainda, instalamos juntos):
+---
 
-- [ ] Flutter SDK **3.35 stable** — <https://docs.flutter.dev/get-started/install>
-- [ ] Android Studio — <https://developer.android.com/studio>
-- [ ] VS Code + extensão **Flutter** — <https://code.visualstudio.com>
+# Parte B — Escolhendo a abordagem
 
-Entregue: um print da pasta de downloads mostrando os arquivos baixados **ou**
-o print do instalador já concluído.
+| Cenário                                                                        | Abordagem      | Justificativa                                                                                                                                                                                                                        |
+| ------------------------------------------------------------------------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Startup com 2 devs, 3 meses de prazo, precisa lançar em Android e iOS          | Flutter        | Com uma equipe pequena e pouco tempo para desenvolvimento, o Flutter permite criar uma única base de código para Android e iOS. Isso reduz o custo de desenvolvimento e facilita a manutenção a longo prazo.                         |
+| App de edição de vídeo com filtros aplicados em tempo real                     | Nativo         | Aplicações de edição de vídeo exigem alto desempenho, processamento gráfico intenso e acesso eficiente à câmera e GPU. O desenvolvimento nativo permite melhor otimização e integração com recursos específicos do sistema.          |
+| Portal de notícias de um jornal que já tem site responsivo                     | WebView        | Como o jornal já possui um site responsivo, a WebView permite reutilizar grande parte da estrutura existente. Isso reduz o tempo e o custo de desenvolvimento.                                                                       |
+| App bancário com biometria e certificado armazenado no aparelho                | Nativo         | Aplicativos bancários precisam de segurança elevada e integração com recursos protegidos do sistema. O desenvolvimento nativo facilita o acesso à biometria, armazenamento seguro e APIs específicas da plataforma.                  |
+| App interno de uma empresa, só Android, 200 funcionários em campo sem internet | Nativo Android | Como o aplicativo será utilizado apenas em Android, não é necessário manter uma versão para outra plataforma. O desenvolvimento nativo oferece maior controle sobre recursos offline, armazenamento local e hardware do dispositivo. |
+| Jogo 2D casual com física e placar online                                      | Unity/Godot    | Jogos possuem necessidades específicas como física, animações e renderização gráfica. Engines como Unity ou Godot oferecem ferramentas mais adequadas para esse tipo de projeto e facilitam a criação para múltiplas plataformas.    |
 
-**D2 (5 pts).** Confirme que tem **20 GB livres** em disco e entregue o print:
+---
 
-```bash
-df -h            # macOS / Linux
-# Windows: Explorer → clique direito no C: → Propriedades
-```
+# Parte C — Pesquisa: migrações reais
 
-**D3 (5 pts).** Se você tem um celular Android, ative as opções de
-desenvolvedor e entregue o print da tela com a **Depuração USB** ligada:
+## Caso 1 — Nubank migrando para Flutter
 
-```
-Configurações → Sobre o telefone
-→ toque 7 vezes em "Número da versão"
-→ Configurações → Sistema → Opções do desenvolvedor
-→ ative "Depuração USB"
-```
+O Nubank utilizava inicialmente desenvolvimento separado para Android e iOS, com tecnologias nativas. A empresa começou a adotar Flutter para novos recursos com o objetivo de compartilhar código entre plataformas e aumentar a velocidade de desenvolvimento.
 
-Se **não** tem celular Android, escreva isso no `RESPOSTAS.md` — você usará
-emulador, e eu vou te ajudar com a configuração na Aula 02.
+O ganho principal foi permitir que equipes entregassem funcionalidades para Android e iOS utilizando uma base compartilhada, reduzindo duplicação de trabalho.
 
-### 🎁 Bônus (+10 pontos)
+A principal dificuldade foi integrar o Flutter com uma grande aplicação já existente, mantendo partes do código nativo.
 
-Se você conseguir instalar o Flutter sozinho antes da aula, rode e cole a saída:
+Fonte:
+https://building.nubank.com/pt-br/por-que-achamos-que-o-flutter-vai-nos-ajudar-a-escalar-o-desenvolvimento-movel-no-nubank/
+
+---
+
+## Caso 2 — BMW migrando para Flutter
+
+A BMW utilizava diferentes soluções para desenvolver aplicativos móveis e decidiu adotar Flutter para padronizar o desenvolvimento entre plataformas.
+
+A empresa relatou ganhos relacionados à reutilização de código, maior velocidade de desenvolvimento e uma experiência mais consistente entre Android e iOS.
+
+A dificuldade principal foi adaptar processos existentes e integrar o Flutter com sistemas e componentes nativos.
+
+Fonte:
+https://flutter.dev/showcase/bmw
+
+---
+
+## Caso que abandonou uma stack cross-platform — Airbnb e React Native
+
+A Airbnb utilizou React Native em parte de seus aplicativos, mas decidiu retornar ao desenvolvimento nativo.
+
+As principais razões foram problemas de escalabilidade, complexidade da arquitetura, manutenção do código e dificuldades de integração com recursos específicos das plataformas.
+
+Esses problemas não significam que Flutter possui exatamente as mesmas limitações, pois cada framework possui uma arquitetura diferente. Porém, o caso mostra que soluções cross-platform não são ideais para todos os projetos, principalmente quando existe grande necessidade de desempenho, controle profundo do sistema e integração com recursos específicos.
+
+Fonte:
+https://medium.com/airbnb-engineering/react-native-at-airbnb-f95aa460be1c
+
+---
+
+# Parte D — Preparação do ambiente
+
+## D1 — Ferramentas instaladas
+
+* Flutter SDK 3.35 stable
+* Android Studio
+* VS Code com extensão Flutter
+
+Print:
+![Downloads das ferramentas](prints/Download.png)
+
+---
+
+## D2 — Espaço disponível em disco
+
+Espaço livre confirmado no computador.
+
+Print:
+![Espaço disponível em disco](prints/DiscoLocal-20Gb.png)
+
+---
+
+## D3 — Depuração USB
+
+Opções de desenvolvedor ativadas e Depuração USB habilitada no celular Android.
+
+Print:
+![Depuração USB ativada](prints/depuracao.jpg)
+
+---
+
+# Bônus — Flutter Doctor
+
+Caso realizado:
 
 ```bash
 flutter doctor -v
 ```
 
-Não se preocupe se houver ✗ vermelhos — **cole assim mesmo** e escreva o que
-você acha que cada um significa. Vamos resolvê-los juntos na Aula 02, e ter o
-diagnóstico pronto acelera a turma inteira.
-
----
-
-## Entrega
-
-```
-exercicios/aula01/
-├── RESPOSTAS.md        # Partes A, B, C e D
-└── prints/
-    ├── app1-layout-bounds.png
-    ├── espaco-disco.png
-    ├── depuracao-usb.png
-    └── flutter-doctor.png     (se fez o bônus)
-```
-
-Abra o PR com o título: `[Aula 01] Seu Nome Completo`
-
-## Rubrica
-
-| Critério | Pontos |
-|---|---|
-| Faz o que foi pedido | 40 |
-| Qualidade da análise | 25 |
-| Apresentação e evidências (prints, fontes) | 20 |
-| Cuidado com detalhes | 15 |
-| **Bônus `flutter doctor`** | +10 |
-
----
-
-## 📚 Para a Aula 02
-
-Traga: **notebook carregado**, **celular Android** (se tiver) e **cabo USB**.
-A Aula 02 é 100% prática — saímos dela com um app rodando no aparelho.
+Print:
+![Flutter Doctor](prints/Doctor.png)
