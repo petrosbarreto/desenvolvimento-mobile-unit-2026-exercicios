@@ -2,7 +2,7 @@
 
 ### A1 e A2
 
-### App: <Instagram>
+### App: Instagram
 
 | Item | Resposta |
 |---|---|
@@ -13,7 +13,7 @@
 | Abordagem que eu **chuto** | React Native |
 | Evidência do meu chute | O AppBrain mostra React Native entre as bibliotecas usadas pelo Instagram no Android. Também aparecem bibliotecas como React Native SVG, o que reforça esse palpite. (https://www.appbrain.com/app/instagram/com.instagram.airwave)|
 
-### App: <Spotify>
+### App: Spotify
 
 | Item | Resposta |
 |---|---|
@@ -24,7 +24,7 @@
 | Abordagem que eu **chuto** | Nativo |
 | Evidência do meu chute | Uma evidência é o uso do Spotify App Remote SDK, que possui SDKs próprios para Android e iOS. Isso combina com a necessidade do aplicativo de trabalhar diretamente com reprodução de áudio e recursos específicos de cada plataforma. (https://pub.dev/documentation/spotify_sdk/latest/)|
 
-### App: <Nubank>
+### App: Nubank
 
 | Item | Resposta |
 |---|---|
