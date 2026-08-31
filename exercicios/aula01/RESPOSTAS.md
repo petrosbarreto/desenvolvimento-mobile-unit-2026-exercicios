@@ -4,7 +4,9 @@
 **Professor :** Petros Barreto
 **Aluno     :** Miguel Luiz Lins de Oliveira
 
+
 ---
+
 
 ## Parte A — Análise de apps reais (30 pontos)
 
@@ -48,6 +50,7 @@
 
 ---
 
+
 ## Parte B — Escolhendo a abordagem (30 pontos)
 
 Para cada cenário, escolha **uma** abordagem e **justifique em 2 a 4 frases**.
@@ -88,6 +91,65 @@ Não existe resposta única — existe justificativa boa e ruim.
 
 **C2: Airbnb**
 
-- quais foram as razões alegadas?
-- essas razões se aplicariam também ao Flutter? Por quê?
-- o que esse caso ensina sobre **quando não** usar cross-platform?
+- Desafios técnicos e organizacionais gerados pela abordagem híbrida, manter IOS, Android e React Native. Pois tinha que manter a infraestrutura de pontes/integração do RN gastando muito esforço pra algo que poderia ser "simples", também sofria de lentidão de inicialização, as atualização do RN quebravam as bibliotecas, dificuldades em depurar problemas de js e RN e animações difíceis de fazer e manter. 
+- Sim, porque os engenheiros teriam que conciliar flutter/dart junto com o nativo, o que causaria um atrito cultural na empresa e demandaria um esforço grande para manter as ferramentas.
+- Não usar quando o sistema nativo já possui complexidade, maturidade e que é funcional, porque adicionar cross-platform geraria débito técnico e reinventaria a roda. Também não usar quando a empresa tem um time grande e especializados(aprender uma stack leva tempo), além de que quando o sistema precisa de mais recurso e melhor performance, é preferível o nativo.
+
+
+---
+
+## Parte D — Preparação do ambiente (20 pontos)
+
+Esta parte é o que faz a Aula 02 render. Faça **antes** da aula.
+
+**D1 (10 pts).** Baixe (não precisa instalar ainda, instalamos juntos):
+
+- [√] Flutter SDK **3.35 stable** — <https://docs.flutter.dev/get-started/install>
+- [√] Android Studio — <https://developer.android.com/studio>
+- [√] VS Code + extensão **Flutter** — <https://code.visualstudio.com>
+
+Entregue: 
+
+- Flutter: ![print](./prints/Flutter-Download.png) 
+- Android Studio: ![print](./prints/Android-Studio-Download.png)
+- VS Code + extensão: ![print](./prints/Extensao-Flutter-Dart.png)
+
+**D2 (5 pts).** Confirme que tem **20 GB livres** em disco e entregue o print:
+
+![print](./prints/Armazenamento-Livre.png)
+
+**D3 (5 pts).** Se você tem um celular Android, ative as opções de
+desenvolvedor e entregue o print da tela com a **Depuração USB** ligada:
+
+![print](./prints/Depuracao-USB.jpg)
+
+
+### 🎁 Bônus (+10 pontos)
+
+- Flutter doctor: ![print](./prints/Flutter-Doctor.png)
+
+[!] Android toolchain - develop for Android devices (Android SDK version 36.0.0) [1.104ms]
+    • Android SDK at C:\Users\migue\AppData\Local\Android\sdk
+    • Emulator version 37.1.11.0 (build_id 15917651) (CL:N/A)
+    • Platform android-37.0, build-tools 36.0.0
+    • Java binary at: C:\Program Files\Android\Android Studio\jbr\bin\java
+      This is the JDK bundled with the latest Android Studio installation on this machine.
+      To manually set the JDK path, use: `flutter config --jdk-dir="path/to/jdk"`.
+    • Java version OpenJDK Runtime Environment (build 25.0.2+-15348964-b329.117)
+    X Android license status unknown.
+      Run `flutter doctor --android-licenses` to accept the SDK licenses.
+      See https://flutter.dev/to/windows-android-setup for more details.
+
+**R:** *O Android lincences foi descontinuado para a nova versão(37)*
+
+[X] Chrome - develop for the web (Cannot find Chrome executable at .\Google\Chrome\Application\chrome.exe) [22ms]
+    ! Cannot find Chrome. Try setting CHROME_EXECUTABLE to a Chrome executable.
+
+**R:** *Não tenho o navegador Chrome.*
+
+[X] Visual Studio - develop Windows apps [19ms]
+    X Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all of its default components
+
+**R:** *Não tenho o Visual Studio para desenvolver para Windows.*
