@@ -1,8 +1,8 @@
-# Exercício — Aula 01: O Ecossistema Mobile e o Lugar do Flutter
+# Exercício - Aula 01: O Ecossistema Mobile e o Lugar do Flutter
 
-**Disciplina:** Desenvolvimento Mobile (`F105880`) — UNIT 2026
+**Disciplina:** Desenvolvimento Mobile (`F105880`) - UNIT 2026
 **Professor:** Petros Barreto
-**Entrega:** até a véspera da Aula 02 — PR `[Aula 01] Seu Nome Completo`
+**Entrega:** até a véspera da Aula 02 — PR `[Aula 02] Adriely Natasha Martins Andrade`
 
 > Esta primeira lista **não tem código**. Ela é de análise e preparação de
 > ambiente — e a Parte D é o que vai fazer a Aula 02 render.
