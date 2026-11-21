@@ -29,6 +29,23 @@ void main() {
     expect(find.text('Sistemas — 5º período'), findsOneWidget);
   });
 
+  testWidgets('Bônus: CartaoAluno favorita e mostra SnackBar ao tocar', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      _emTela(const CartaoAluno(nome: 'Ana', curso: 'Sistemas')),
+    );
+    expect(find.byIcon(Icons.star_border), findsOneWidget);
+
+    await tester.tap(find.byIcon(Icons.star_border));
+    await tester.pump();
+    expect(find.byIcon(Icons.star), findsOneWidget);
+
+    await tester.tap(find.text('Ana'));
+    await tester.pump();
+    expect(find.text('Ana — Sistemas'), findsOneWidget);
+  });
+
   testWidgets('ContadorDeCliques não fica negativo, soma e zera', (
     tester,
   ) async {

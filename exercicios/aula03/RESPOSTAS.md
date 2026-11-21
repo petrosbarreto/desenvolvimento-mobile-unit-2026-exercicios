@@ -7,7 +7,7 @@ Projeto: `anatomia_app/` (criado com
 `flutter create --org br.edu.unit --platforms=android anatomia_app`).
 
 - `flutter analyze` → `No issues found!`
-- `flutter test` → `+4: All tests passed!` (um teste para o app e um para cada widget da Parte C)
+- `flutter test` → `+5: All tests passed!` (um teste para o app, um para cada widget da Parte C e um para o bônus)
 - `dart format .` aplicado
 
 ---
@@ -226,7 +226,7 @@ Cada widget está em seu próprio arquivo, em `anatomia_app/lib/widgets/`:
 
 | Widget | Arquivo | Tipo | Print |
 |---|---|---|---|
-| `CartaoAluno` | `cartao_aluno.dart` | Stateless | ![C1](prints/c1-cartao.png) |
+| `CartaoAluno` | `cartao_aluno.dart` | Stateless na Parte C; Stateful depois do bônus | ![C1](prints/c1-cartao.png) |
 | `Cronometro` | `cronometro.dart` | Stateless | ![C2](prints/c2-cronometro.png) |
 | `ContadorDeCliques` | `contador_de_cliques.dart` | Stateful | ![C3](prints/c3-contador.png) |
 
@@ -246,8 +246,10 @@ O critério da aula é a pergunta: **"este widget precisa lembrar de alguma cois
 que muda enquanto ele está na tela?"** No contador, sim: o número muda a cada
 toque e precisa ser lembrado entre um desenho e outro, e é o próprio widget que
 muda esse valor. Por isso o valor mora num `State` e cada mudança passa por
-`setState`. Já o `CartaoAluno` e o `Cronometro` só mostram os dados que
-recebem de fora e não mudam sozinhos — por isso são Stateless.
+`setState`. Já o `Cronometro` e o `CartaoAluno` da Parte C só mostram os dados que
+recebem de fora e não mudam sozinhos — por isso são Stateless. (No bônus, o
+`CartaoAluno` passou a ser Stateful, porque ganhou um estado próprio: o
+favorito.)
 
 ---
 
@@ -314,3 +316,36 @@ grande nas configurações de acessibilidade ou com o teclado aberto. O
 
 No Flutter tudo isso é widget, encaixado na árvore; no CSS seriam atributos do
 próprio elemento.
+
+---
+
+## 🎁 Bônus — `CartaoAluno` tocável e favoritável
+
+O `CartaoAluno` virou `StatefulWidget`:
+
+- o `Card` foi envolvido num `InkWell` com `onTap:` que mostra uma `SnackBar`
+  com "nome — curso";
+- ganhou um `IconButton` de estrela que alterna entre `Icons.star_border` e
+  `Icons.star` (a cor da estrela cheia vem do tema: `colorScheme.primary`);
+- o estado `_favorito` mora em `_CartaoAlunoState` e muda com `setState`;
+- há um teste de widget novo: toca na estrela e confere que ela ficou cheia;
+  toca no cartão e confere que a `SnackBar` apareceu.
+
+![Bônus — favorito e SnackBar](prints/bonus-favorito.png)
+
+**O favorito deveria mesmo morar dentro do cartão?**
+Para este exercício funciona, mas na prática **não**. Do jeito que está, só o
+próprio cartão sabe se está favoritado. A tela não consegue perguntar "quais
+alunos são favoritos?", e o valor se perde quando o cartão é reconstruído do
+zero (por exemplo, numa lista longa em que o cartão sai da tela e volta, ou ao
+trocar de tela).
+
+**Se a tela precisasse filtrar os favoritos, onde esse estado deveria ficar?**
+Num lugar **acima** dos cartões: no widget da tela (ou da lista) que mostra
+todos eles. Essa tela guardaria, por exemplo, um `Set<String>` com os alunos
+favoritados e passaria para cada cartão duas coisas: se ele é favorito
+(`favorito: true/false`) e uma função para avisar quando a estrela for tocada
+(`onFavoritar: () {...}`). O cartão voltaria a ser Stateless — ele só mostra e
+avisa; quem decide e guarda é a tela. Com o estado num lugar só, dá para
+filtrar, contar e, mais tarde, salvar os favoritos em banco. É a ideia de
+"subir o estado" (*lifting state up*) da Aula 22.
