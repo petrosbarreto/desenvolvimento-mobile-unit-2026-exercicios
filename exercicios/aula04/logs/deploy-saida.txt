@@ -1,0 +1,118 @@
+PS> powershell -ExecutionPolicy Bypass -File deploy.ps1 -Projeto C:\projetos\anatomia_app -LogcatSegundos 8
+== deploy de br.edu.unit.anatomia_app ==
+Projeto: C:\projetos\anatomia_app
+
+[1/7] Verificando aparelho conectado
+    OK: 0088874915 (motorola edge 50 neo)
+
+[2/7] flutter build apk --debug
+    Running Gradle task 'assembleDebug'...                          
+    WARNING: A restricted method in java.lang.System has been called
+    WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/suear/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+    WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+    WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+    System.Management.Automation.RemoteException
+    Running Gradle task 'assembleDebug'...                             22,3s
+    Ô£ô Built build\app\outputs\flutter-apk\app-debug.apk
+    APK: 181,8 MB
+
+[3/7] Desinstalando versao anterior
+    Success
+
+[4/7] Instalando o APK novo
+    Performing Streamed Install
+    Success
+
+[5/7] Abrindo o app
+      bash arg: -p
+      bash arg: br.edu.unit.anatomia_app
+      bash arg: -c
+      bash arg: android.intent.category.LAUNCHER
+      bash arg: 1
+    args: [-p, br.edu.unit.anatomia_app, -c, android.intent.category.LAUNCHER, 1]
+     arg: "-p"
+     arg: "br.edu.unit.anatomia_app"
+     arg: "-c"
+     arg: "android.intent.category.LAUNCHER"
+     arg: "1"
+    data="br.edu.unit.anatomia_app"
+    data="android.intent.category.LAUNCHER"
+    Events injected: 1
+    ## Network stats: elapsed time=64ms (0ms mobile, 0ms wifi, 64ms not connected)
+
+[6/7] Capturando print
+    Salvo: C:\projetos\desenvolvimento-mobile-unit-2026-exercicios\exercicios\aula04\prints\deploy-20261121-171050.png (243.629 bytes)
+
+[7/7] Logcat do app
+    PID do app: 31079
+    --------- beginning of main
+    11-21 17:10:44.057 31079 31079 I it.anatomia_app: Late-enabling -Xcheck:jni
+    11-21 17:10:44.093 31079 31079 I it.anatomia_app: Using generational CollectorTypeCMC GC.
+    11-21 17:10:44.117 31079 31079 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+    11-21 17:10:44.180 31079 31079 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+    11-21 17:10:44.180 31079 31079 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+    11-21 17:10:44.254 31079 31079 D nativeloader: Configuring clns-9 for other apk /data/app/~~tq_yBze46EKmS2VVSXYw3w==/br.edu.unit.anatomia_app-Uy7AKsYAOSAeOasfo08kSg==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~tq_yBze46EKmS2VVSXYw3w==/br.edu.unit.anatomia_app-Uy7AKsYAOSAeOasfo08kSg==/lib/arm64:/data/app/~~tq_yBze46EKmS2VVSXYw3w==/br.edu.unit.anatomia_app-Uy7AKsYAOSAeOasfo08kSg==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/br.edu.unit.anatomia_app
+    11-21 17:10:44.266 31079 31079 V GraphicsEnvironment: Currently set values for:
+    11-21 17:10:44.266 31079 31079 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+    11-21 17:10:44.266 31079 31079 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+    11-21 17:10:44.266 31079 31079 V GraphicsEnvironment: br.edu.unit.anatomia_app is not listed in per-application setting
+    11-21 17:10:44.267 31079 31079 V GraphicsEnvironment: ANGLE allowlist from config: 
+    11-21 17:10:44.267 31079 31079 V GraphicsEnvironment: br.edu.unit.anatomia_app is not listed in ANGLE allowlist or settings, returning default
+    11-21 17:10:44.267 31079 31079 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+    11-21 17:10:44.301 31079 31079 I Typeface: updateThemeFont new=Rookery-Regular;old=sans-serif;new=Rookery-Stacked;old=
+    --------- beginning of system
+    11-21 17:10:44.321 31079 31116 I DisplayManager: Choreographer implicitly registered for the refresh rate.
+    11-21 17:10:44.335 31079 31079 E ashmem  : Pinning is deprecated since Android Q. Please use trim or other methods.
+    11-21 17:10:44.363 31079 31121 D FlutterJNI: Beginning load of flutter...
+    11-21 17:10:44.365 31079 31129 I ResourceExtractor: Resource version mismatch res_timestamp-1-1795291842532
+    11-21 17:10:44.376 31079 31121 D nativeloader: Load /data/app/~~tq_yBze46EKmS2VVSXYw3w==/br.edu.unit.anatomia_app-Uy7AKsYAOSAeOasfo08kSg==/base.apk!/lib/arm64-v8a/libflutter.so using class loader ns clns-9 (caller=/data/app/~~tq_yBze46EKmS2VVSXYw3w==/br.edu.unit.anatomia_app-Uy7AKsYAOSAeOasfo08kSg==/base.apk): ok
+    11-21 17:10:44.377 31079 31121 D FlutterJNI: flutter (null) was loaded normally!
+    11-21 17:10:44.421 31079 31116 I HWUI    : setGrContext nullptr-->validptr
+    11-21 17:10:44.783 31079 31129 I ResourceExtractor: Extracted baseline resource assets/flutter_assets/kernel_blob.bin
+    11-21 17:10:44.783 31079 31129 I ResourceExtractor: Extracted baseline resource assets/flutter_assets/vm_snapshot_data
+    11-21 17:10:44.885 31079 31129 I ResourceExtractor: Extracted baseline resource assets/flutter_assets/isolate_snapshot_data
+    11-21 17:10:44.928 31079 31079 D DesktopModeFlags: Toggle override initialized to: OVERRIDE_UNSET
+    11-21 17:10:44.931 31079 31141 D vulkan  : searching for layers in '/data/app/~~tq_yBze46EKmS2VVSXYw3w==/br.edu.unit.anatomia_app-Uy7AKsYAOSAeOasfo08kSg==/lib/arm64'
+    11-21 17:10:44.931 31079 31141 D vulkan  : searching for layers in '/data/app/~~tq_yBze46EKmS2VVSXYw3w==/br.edu.unit.anatomia_app-Uy7AKsYAOSAeOasfo08kSg==/base.apk!/lib/arm64-v8a'
+    11-21 17:10:44.935 31079 31141 D vulkan  : added global layer 'VK_LAYER_KHRONOS_validation' from library '/data/app/~~tq_yBze46EKmS2VVSXYw3w==/br.edu.unit.anatomia_app-Uy7AKsYAOSAeOasfo08kSg==/base.apk!/lib/arm64-v8a/libVkLayer_khronos_validation.so'
+    11-21 17:10:44.967 31079 31141 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+    11-21 17:10:45.081 31079 31155 I flutter : The Dart VM service is listening on http://127.0.0.1:35533/FBpc2-g-WAA=/
+    11-21 17:10:45.229 31079 31079 I it.anatomia_app: hiddenapi: Accessing hidden method Landroid/view/accessibility/AccessibilityNodeInfo;->getSourceNodeId()J (runtime_flags=0, domain=platform, api=unsupported,test-api) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app, TargetSdkVersion=36) using reflection: allowed
+    11-21 17:10:45.229 31079 31079 I it.anatomia_app: hiddenapi: Accessing hidden method Landroid/view/accessibility/AccessibilityRecord;->getSourceNodeId()J (runtime_flags=0, domain=platform, api=unsupported) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app, TargetSdkVersion=36) using reflection: allowed
+    11-21 17:10:45.229 31079 31079 I it.anatomia_app: hiddenapi: Accessing hidden field Landroid/view/accessibility/AccessibilityNodeInfo;->mChildNodeIds:Landroid/util/LongArray; (runtime_flags=0, domain=platform, api=unsupported) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app, TargetSdkVersion=36) using reflection: allowed
+    11-21 17:10:45.229 31079 31079 I it.anatomia_app: hiddenapi: Accessing hidden method Landroid/util/LongArray;->get(I)J (runtime_flags=0, domain=platform, api=unsupported) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app, TargetSdkVersion=36) using reflection: allowed
+    11-21 17:10:45.236 31079 31079 D AccessibilityBridge: Setting not found: accessibility_display_inversion_enabled, using default: 0
+    11-21 17:10:45.260 31079 31079 D FlutterRenderer: Width is zero. 0,0
+    11-21 17:10:45.264 31079 31079 D CompatChangeReporter: Compat change id reported: 377864165; UID 10581; state: ENABLED
+    11-21 17:10:46.648 31079 31079 I Choreographer: Skipped 284 frames!  The application may be doing too much work on its main thread.
+    11-21 17:10:46.660 31079 31079 I WindowExtensionsImpl: Initializing Window Extensions, vendor API level=9, activity embedding enabled=true
+    11-21 17:10:46.684 31079 31079 D FlutterRenderer: Width is zero. 0,0
+    11-21 17:10:46.684 31079 31091 I it.anatomia_app: Compiler allocated 5493KB to compile void android.view.ViewRootImpl.performTraversals()
+    11-21 17:10:46.694 31079 31079 E it.anatomia_app: [perfctl] 31079 31079 FPSGO ver:7
+    11-21 17:10:46.694 31079 31079 E it.anatomia_app: [perfctl] 1 1 1 0
+    11-21 17:10:46.697 31079 31079 D BufferQueueConsumer: [](id:796700000000,api:0,p:-1,c:31079) connect: controlledByApp=false
+    11-21 17:10:46.698 31079 31079 D BLASTBufferQueue: [VRI[MainActivity]#0](f:0,a:0) constructor()
+    11-21 17:10:46.698 31079 31079 D BLASTBufferQueue: [VRI[MainActivity]#0](f:0,a:0) update width=1200 height=2670 format=-3 mTransformHint=0
+    11-21 17:10:46.702 31079 31079 D FlutterJNI: Sending viewport metrics to the engine.
+    11-21 17:10:46.713 31079 31079 D BufferQueueConsumer: [](id:796700000001,api:0,p:-1,c:31079) connect: controlledByApp=false
+    11-21 17:10:46.713 31079 31079 D BLASTBufferQueue: [5cde6f9 SurfaceView[br.edu.unit.anatomia_app/br.edu.unit.anatomia_app.MainActivity]#1](f:0,a:0) constructor()
+    11-21 17:10:46.714 31079 31079 D BLASTBufferQueue: [5cde6f9 SurfaceView[br.edu.unit.anatomia_app/br.edu.unit.anatomia_app.MainActivity]#1](f:0,a:0) update width=1200 height=2670 format=4 mTransformHint=0
+    11-21 17:10:46.719 31079 31141 D it.anatomia_app: Can't load libmbrainSDK
+    11-21 17:10:46.719 31079 31141 D it.anatomia_app: initMbrain failed
+    11-21 17:10:47.185 31079 31141 I GrallocExtra: gralloc_extra_query:is_SW3D 0
+    11-21 17:10:47.186 31079 31141 D BLASTBufferQueue: [5cde6f9 SurfaceView[br.edu.unit.anatomia_app/br.edu.unit.anatomia_app.MainActivity]#1](f:0,a:1) acquireNextBufferLocked size=1200x2670 mFrameNumber=1 applyTransaction=true mTimestamp=617439104251493(auto) mPendingTransactions.size=0 graphicBufferId=133483288592394 transform=0
+    11-21 17:10:47.186 31079 31079 I Choreographer: Skipped 59 frames!  The application may be doing too much work on its main thread.
+    11-21 17:10:47.186 31079 31141 D it.anatomia_app: Can't load libmbrainSDK
+    11-21 17:10:47.186 31079 31141 D it.anatomia_app: initMbrain failed
+    11-21 17:10:47.190 31079 31079 D FlutterJNI: Sending viewport metrics to the engine.
+    11-21 17:10:47.202 31079 31079 D WindowLayoutComponentImpl: Register WindowLayoutInfoListener on Context=br.edu.unit.anatomia_app.MainActivity@2a1663e, of which baseContext=android.app.ContextImpl@d8cf284
+    11-21 17:10:47.265 31079 31116 E HWUI    : fbcNotifySbeRescue error: undefined symbol: fbcNotifySbeRescue
+    11-21 17:10:47.265 31079 31116 E HWUI    : fbcNotifyHintFrame error: undefined symbol: fbcNotifyHintFrame
+    11-21 17:10:47.265 31079 31116 E HWUI    : updateSbeFeatureOption error: undefined symbol: updateSbeFeatureOption
+    11-21 17:10:47.266 31079 31116 D BLASTBufferQueue: [VRI[MainActivity]#0](f:0,a:1) acquireNextBufferLocked size=1200x2670 mFrameNumber=1 applyTransaction=true mTimestamp=617439186446032(auto) mPendingTransactions.size=0 graphicBufferId=133483288592402 transform=0
+    11-21 17:10:47.269 31079 31079 D FlutterJNI: Sending viewport metrics to the engine.
+    11-21 17:10:47.323 31079 31079 D InsetsController: hide(ime(), fromIme=false)
+    11-21 17:10:47.324 31079 31079 I ImeTracker: br.edu.unit.anatomia_app:b1e7fc23: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+    11-21 17:10:52.381 31079 31196 D ProfileInstaller: Installing profile for br.edu.unit.anatomia_app
+
+== deploy concluido com sucesso ==

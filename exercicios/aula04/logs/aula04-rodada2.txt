@@ -1,0 +1,429 @@
+﻿**********************
+Início da transcrição do Windows PowerShell
+Hora de início: 20261121162056
+Nome de Usuário: SUE_ARRUDA\suear
+Executar como Usuário: SUE_ARRUDA\suear
+Nome da Configuração: 
+Computador: SUE_ARRUDA (Microsoft Windows NT 10.0.26300.0)
+Aplicativo Host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File C:\Users\suear\Downloads\rodada2.ps1
+ID do Processo: 5564
+PSVersion: 5.1.26100.9818
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9818
+BuildVersion: 10.0.26100.9818
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcrição iniciada, o arquivo de saída é C:\projetos\aula04-rodada2.txt
+=================== LAB 04: debugPrint no VisitaCard ===================
+
+PS> dart format lib
+Formatted 4 files (0 changed) in 0.01 seconds.
+
+PS> flutter analyze
+Resolving dependencies...
+Downloading packages...
+  cupertino_icons 1.0.9 (2.0.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.4 available)
+Got dependencies!
+5 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Analyzing checkpoint...
+No issues found! (ran in 4.4s)
+
+PS> flutter test
+Resolving dependencies...
+Downloading packages...
+  cupertino_icons 1.0.9 (2.0.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.4 available)
+Got dependencies!
+5 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading C:/projetos/checkpoint/test/widget_test.dart
+00:00 +0: a tela inicial mostra o t├¡tulo Minhas visitas
+00:00 +1: All tests passed!
+
+PS> flutter build apk --debug
+Resolving dependencies...
+Downloading packages...
+  cupertino_icons 1.0.9 (2.0.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.4 available)
+Got dependencies!
+5 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/suear/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Running Gradle task 'assembleDebug'...                             11,1s
+Ô£ô Built build\app\outputs\flutter-apk\app-debug.apk
+
+PS> adb install -r build\app\outputs\flutter-apk\app-debug.apk
+Performing Streamed Install
+Success
+
+PS> adb logcat -c
+
+PS> adb shell am start -n br.edu.unit.checkpoint/.MainActivity
+Starting: Intent { cmp=br.edu.unit.checkpoint/.MainActivity }
+
+>>> No celular: toque no CIRCULO de 2 visitas diferentes (cada toque gera uma linha de log).
+
+----- adb logcat *:E  (filtrado por flutter/Exception para tirar o ruido de outros apps) -----
+11-21 16:21:33.891  8257 12739 E MFL     : PlayStoreAppInfo - Exception HTTP error fetching URL. Status=404, URL=[https://play.google.com/store/apps/details?id=br.edu.unit.checkpoint] for br.edu.unit.checkpoint
+11-21 16:21:35.677 11923 12514 E GoogleApiManager: java.lang.SecurityException: Unknown calling package name 'com.google.android.gms'.
+11-21 16:21:35.677 11923 12514 E GoogleApiManager: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3339)
+11-21 16:21:35.677 11923 12514 E GoogleApiManager: 	at android.os.Parcel.createException(Parcel.java:3323)
+11-21 16:21:35.677 11923 12514 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:3306)
+11-21 16:21:35.677 11923 12514 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:3248)
+11-21 16:21:43.022  8588  8588 E unit.checkpoint: [perfctl] 8588 8588 FPSGO ver:7
+11-21 16:21:43.022  8588  8588 E unit.checkpoint: [perfctl] 1 1 1 0
+11-21 16:21:46.254 26337 26564 E msys    : E[N data-request]_HandleDataResponse(2108)=>Data request error for task 4B5C393F-56D7-42C7-BE03-15721A136474 (response type 1): java.net.SocketTimeoutException: failed to connect to /57.144.129.32 (port 443) from /192.168.0.36 (port 35268) after 60000ms
+
+----- adb logcat -s flutter -----
+--------- beginning of main
+11-21 16:21:41.443  8588  8621 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+11-21 16:21:41.563  8588  8635 I flutter : The Dart VM service is listening on http://127.0.0.1:46795/_2yqHyj9qiU=/
+11-21 16:22:09.984  8588  8588 I flutter : VisitaCard "Manuten├º├úo do ar-condicionado" ÔåÆ conclu├¡da = true
+11-21 16:22:10.780  8588  8588 I flutter : VisitaCard "Vistoria de c├ómeras" ÔåÆ conclu├¡da = true
+
+----- flutter logs -----
+flutter : AndroidManifest.xml could not be found.
+    + CategoryInfo          : NotSpecified: (AndroidManifest.xml could not be found.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Please check C:\Users\suear\OneDrive\Documentos\android\AndroidManifest.xml for errors.
+Showing motorola edge 50 neo logs:
+D/FlutterJNI( 8588): Beginning load of flutter...
+D/FlutterJNI( 8588): flutter (null) was loaded normally!
+I/flutter ( 8588): [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+I/flutter ( 8588): The Dart VM service is listening on http://127.0.0.1:46795/_2yqHyj9qiU=/
+D/FlutterRenderer( 8588): Width is zero. 0,0
+D/FlutterRenderer( 8588): Width is zero. 0,0
+D/FlutterJNI( 8588): Sending viewport metrics to the engine.
+D/FlutterJNI( 8588): Sending viewport metrics to the engine.
+D/FlutterJNI( 8588): Sending viewport metrics to the engine.
+I/flutter ( 8588): VisitaCard "Manuten├º├úo do ar-condicionado" ÔåÆ conclu├¡da = true
+I/flutter ( 8588): VisitaCard "Vistoria de c├ómeras" ÔåÆ conclu├¡da = true
+=================== C1: excecao no callback do botao ===================
+
+PS> findstr /n /c:"Erro proposital C1" lib\main.dart
+72:      throw Exception('Erro proposital C1');
+
+PS> flutter build apk --debug
+Running Gradle task 'assembleDebug'...
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/suear/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Running Gradle task 'assembleDebug'...                             10,0s
+Ô£ô Built build\app\outputs\flutter-apk\app-debug.apk
+
+PS> adb install -r build\app\outputs\flutter-apk\app-debug.apk
+Performing Streamed Install
+Success
+
+PS> adb logcat -c
+
+PS> adb shell am start -n br.edu.unit.anatomia_app/.MainActivity
+Starting: Intent { cmp=br.edu.unit.anatomia_app/.MainActivity }
+
+>>> No celular: toque 5 VEZES no botao + FLUTUANTE (canto inferior direito). Repare se o app FECHA ou continua aberto.
+
+----- adb logcat *:E  (filtrado por flutter/Exception para tirar o ruido de outros apps) -----
+11-21 16:22:48.685  2735  2735 E SmsApplication: isSystemPackage NameNotFoundException:com.motorola.cn.devicemigration
+11-21 16:22:48.782  2735  2735 E SmsApplication: isSystemPackage NameNotFoundException:com.motorola.cn.devicemigration
+11-21 16:22:51.553  8257  8302 E MFL     : PlayStoreAppInfo - Exception HTTP error fetching URL. Status=404, URL=[https://play.google.com/store/apps/details?id=br.edu.unit.anatomia_app] for br.edu.unit.anatomia_app
+11-21 16:22:57.360 10352 10352 E it.anatomia_app: [perfctl] 10352 10352 FPSGO ver:7
+11-21 16:22:57.360 10352 10352 E it.anatomia_app: [perfctl] 1 1 1 0
+11-21 16:23:27.905 10352 10352 E flutter : [ERROR:flutter/lib/ui/window/platform_configuration.cc(475)] Reported frame time is older than the last one; clamping. 614599833470 < 614599835376 ~= 1906
+
+----- adb logcat -s flutter -----
+--------- beginning of main
+11-21 16:22:55.862 10352 10380 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+11-21 16:22:56.055 10352 10394 I flutter : The Dart VM service is listening on http://127.0.0.1:42305/DqNNeU5el4I=/
+11-21 16:23:27.905 10352 10352 E flutter : [ERROR:flutter/lib/ui/window/platform_configuration.cc(475)] Reported frame time is older than the last one; clamping. 614599833470 < 614599835376 ~= 1906
+
+----- flutter logs -----
+flutter : AndroidManifest.xml could not be found.
+    + CategoryInfo          : NotSpecified: (AndroidManifest.xml could not be found.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Please check C:\Users\suear\OneDrive\Documentos\android\AndroidManifest.xml for errors.
+Showing motorola edge 50 neo logs:
+D/FlutterJNI(10352): Beginning load of flutter...
+D/FlutterJNI(10352): flutter (null) was loaded normally!
+I/flutter (10352): [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+I/flutter (10352): The Dart VM service is listening on http://127.0.0.1:42305/DqNNeU5el4I=/
+D/FlutterRenderer(10352): Width is zero. 0,0
+D/FlutterRenderer(10352): Width is zero. 0,0
+D/FlutterJNI(10352): Sending viewport metrics to the engine.
+D/FlutterJNI(10352): Sending viewport metrics to the engine.
+D/FlutterJNI(10352): Sending viewport metrics to the engine.
+E/flutter (10352): [ERROR:flutter/lib/ui/window/platform_configuration.cc(475)] Reported frame time is older than the last one; clamping. 614599833470 < 614599835376 ~= 1906
+=================== C2: erro antes do runApp ===================
+
+PS> findstr /n /c:"Erro proposital C2" lib\main.dart
+10:  throw Exception('Erro proposital C2 - antes do runApp');
+
+PS> flutter build apk --debug
+Running Gradle task 'assembleDebug'...
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/suear/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Running Gradle task 'assembleDebug'...                              9,7s
+Ô£ô Built build\app\outputs\flutter-apk\app-debug.apk
+
+PS> adb install -r build\app\outputs\flutter-apk\app-debug.apk
+Performing Streamed Install
+Success
+
+PS> adb logcat -c
+
+PS> adb shell am start -n br.edu.unit.anatomia_app/.MainActivity
+Starting: Intent { cmp=br.edu.unit.anatomia_app/.MainActivity }
+
+>>> No celular: so observe a tela (deve ficar preta/branca, sem o app). Nao precisa tocar em nada.
+
+----- adb logcat *:E  (filtrado por flutter/Exception para tirar o ruido de outros apps) -----
+11-21 16:24:03.574  8257  8302 E MFL     : PlayStoreAppInfo - Exception HTTP error fetching URL. Status=404, URL=[https://play.google.com/store/apps/details?id=br.edu.unit.anatomia_app] for br.edu.unit.anatomia_app
+11-21 16:24:06.108  2735  2880 E DatabaseUtils: Writing exception to parcel
+11-21 16:24:06.108  2735  2880 E DatabaseUtils: java.lang.SecurityException: No permission to access APN settings
+11-21 16:24:06.110 31704 31937 E RequestContextBuilder: java.lang.SecurityException: No permission to access APN settings
+11-21 16:24:06.110 31704 31937 E RequestContextBuilder: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3339)
+11-21 16:24:06.110 31704 31937 E RequestContextBuilder: 	at android.os.Parcel.createException(Parcel.java:3323)
+11-21 16:24:06.110 31704 31937 E RequestContextBuilder: 	at android.os.Parcel.readException(Parcel.java:3306)
+11-21 16:24:06.110 31704 31937 E RequestContextBuilder: 	at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:201)
+11-21 16:24:06.110 31704 31937 E RequestContextBuilder: 	at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:153)
+11-21 16:24:11.179 10846 10846 E flutter : [ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: Exception: Erro proposital C2 - antes do runApp
+11-21 16:24:11.179 10846 10846 E flutter : #0      main (package:anatomia_app/main.dart:10:3)
+11-21 16:24:11.179 10846 10846 E flutter : #1      _runMain.<anonymous closure> (dart:ui/hooks.dart:430:23)
+11-21 16:24:11.179 10846 10846 E flutter : #2      _delayEntrypointInvocation.<anonymous closure> (dart:isolate-patch/isolate_patch.dart:313:19)
+11-21 16:24:11.179 10846 10846 E flutter : #3      _RawReceivePort._handleMessage (dart:isolate-patch/isolate_patch.dart:192:12)
+11-21 16:24:11.179 10846 10846 E flutter :
+11-21 16:24:11.223 10846 10846 E it.anatomia_app: [perfctl] 10846 10846 FPSGO ver:7
+11-21 16:24:11.224 10846 10846 E it.anatomia_app: [perfctl] 1 1 1 0
+11-21 16:24:15.935 11923 12514 E GoogleApiManager: java.lang.SecurityException: Unknown calling package name 'com.google.android.gms'.
+11-21 16:24:15.935 11923 12514 E GoogleApiManager: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3339)
+11-21 16:24:15.935 11923 12514 E GoogleApiManager: 	at android.os.Parcel.createException(Parcel.java:3323)
+11-21 16:24:15.935 11923 12514 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:3306)
+11-21 16:24:15.935 11923 12514 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:3248)
+
+----- adb logcat -s flutter -----
+--------- beginning of main
+11-21 16:24:10.897 10846 10882 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+11-21 16:24:11.009 10846 10900 I flutter : The Dart VM service is listening on http://127.0.0.1:41031/YqUtL0K92qs=/
+11-21 16:24:11.179 10846 10846 E flutter : [ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: Exception: Erro proposital C2 - antes do runApp
+11-21 16:24:11.179 10846 10846 E flutter : #0      main (package:anatomia_app/main.dart:10:3)
+11-21 16:24:11.179 10846 10846 E flutter : #1      _runMain.<anonymous closure> (dart:ui/hooks.dart:430:23)
+11-21 16:24:11.179 10846 10846 E flutter : #2      _delayEntrypointInvocation.<anonymous closure> (dart:isolate-patch/isolate_patch.dart:313:19)
+11-21 16:24:11.179 10846 10846 E flutter : #3      _RawReceivePort._handleMessage (dart:isolate-patch/isolate_patch.dart:192:12)
+11-21 16:24:11.179 10846 10846 E flutter :
+
+----- flutter logs -----
+
+ÔöîÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ
+Ôöé A new version of Flutter is available!                  Ôöé
+Ôöé                                                         Ôöé
+Ôöé To update to the latest version, run "flutter upgrade". Ôöé
+ÔööÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ
+flutter : AndroidManifest.xml could not be found.
+    + CategoryInfo          : NotSpecified: (AndroidManifest.xml could not be found.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Please check C:\Users\suear\OneDrive\Documentos\android\AndroidManifest.xml for errors.
+Showing motorola edge 50 neo logs:
+D/FlutterJNI(10846): Beginning load of flutter...
+D/FlutterJNI(10846): flutter (null) was loaded normally!
+I/flutter (10846): [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+I/flutter (10846): The Dart VM service is listening on http://127.0.0.1:41031/YqUtL0K92qs=/
+D/FlutterRenderer(10846): Width is zero. 0,0
+E/flutter (10846): [ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: Exception: Erro proposital C2 - antes do runApp
+E/flutter (10846): #0      main (package:anatomia_app/main.dart:10:3)
+E/flutter (10846): #1      _runMain.<anonymous closure> (dart:ui/hooks.dart:430:23)
+E/flutter (10846): #2      _delayEntrypointInvocation.<anonymous closure> (dart:isolate-patch/isolate_patch.dart:313:19)
+E/flutter (10846): #3      _RawReceivePort._handleMessage (dart:isolate-patch/isolate_patch.dart:192:12)
+E/flutter (10846):
+D/FlutterRenderer(10846): Width is zero. 0,0
+D/FlutterJNI(10846): Sending viewport metrics to the engine.
+D/FlutterJNI(10846): Sending viewport metrics to the engine.
+=================== C3: requisicao HTTP SEM a permissao INTERNET ===================
+
+PS> flutter pub add http
+Resolving dependencies...
+Downloading packages...
+  cupertino_icons 1.0.9 (2.0.0 available)
++ http 1.6.0
++ http_parser 4.1.2
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  test_api 0.7.12 (0.7.15 available)
++ typed_data 1.4.0
+  vector_math 2.4.0 (2.4.4 available)
++ web 1.1.2
+Changed 4 dependencies!
+5 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+
+PS> findstr /n /c:"_buscar" /c:"http" lib\main.dart
+2:import 'package:http/http.dart' as http;
+77:  Future<void> _buscar() async {
+78:    final r = await http.get(Uri.parse('https://example.com'));
+143:        onPressed: _buscar,
+
+PS> findstr /n /c:"uses-permission" android\app\src\main\AndroidManifest.xml
+(Obs.: no build DEBUG o Flutter ja coloca a permissao INTERNET em src/debug/AndroidManifest.xml.
+ Por isso o C3 e feito com o build RELEASE, que usa so o manifesto de src/main.)
+
+PS> flutter build apk --release
+Running Gradle task 'assembleRelease'...
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/suear/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Font asset "MaterialIcons-Regular.otf" was tree-shaken, reducing it from 1645184 to 1572 bytes (99.9% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+Running Gradle task 'assembleRelease'...                           35,3s
+Ô£ô Built build\app\outputs\flutter-apk\app-release.apk (44.4MB)
+
+PS> adb install -r build\app\outputs\flutter-apk\app-release.apk
+Performing Streamed Install
+Success
+
+PS> adb logcat -c
+
+PS> adb shell am start -n br.edu.unit.anatomia_app/.MainActivity
+Starting: Intent { cmp=br.edu.unit.anatomia_app/.MainActivity }
+
+>>> No celular: toque 1 VEZ no botao + FLUTUANTE e espere uns 5 segundos.
+
+----- adb logcat *:E  (filtrado por flutter/Exception para tirar o ruido de outros apps) -----
+11-21 16:25:29.208 11152 11152 E it.anatomia_app: [perfctl] 11152 11152 FPSGO ver:7
+11-21 16:25:29.208 11152 11152 E it.anatomia_app: [perfctl] 1 1 1 0
+11-21 16:25:31.025  2365 10498 E knrq    : java.lang.RuntimeException: ManagedChannel allocation site
+11-21 16:25:39.417 11152 11152 E flutter : [ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: ClientException with SocketException: Failed host lookup: 'example.com' (OS Error: No address associated with hostname, errno = 7), uri=https://example.com
+11-21 16:25:39.417 11152 11152 E flutter : #0      IOClient.send (package:http/src/io_client.dart:227)
+11-21 16:25:39.417 11152 11152 E flutter : <asynchronous suspension>
+11-21 16:25:39.417 11152 11152 E flutter : #1      BaseClient._sendUnstreamed (package:http/src/base_client.dart:93)
+11-21 16:25:39.417 11152 11152 E flutter : <asynchronous suspension>
+11-21 16:25:39.417 11152 11152 E flutter : #2      _withClient (package:http/http.dart:170)
+11-21 16:25:39.417 11152 11152 E flutter : <asynchronous suspension>
+11-21 16:25:39.417 11152 11152 E flutter : #3      _MyHomePageState._buscar (package:anatomia_app/main.dart:78)
+11-21 16:25:39.417 11152 11152 E flutter : <asynchronous suspension>
+11-21 16:25:39.417 11152 11152 E flutter :
+
+----- adb logcat -s flutter -----
+--------- beginning of main
+11-21 16:25:28.991 11152 11177 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+11-21 16:25:39.417 11152 11152 E flutter : [ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: ClientException with SocketException: Failed host lookup: 'example.com' (OS Error: No address associated with hostname, errno = 7), uri=https://example.com
+11-21 16:25:39.417 11152 11152 E flutter : #0      IOClient.send (package:http/src/io_client.dart:227)
+11-21 16:25:39.417 11152 11152 E flutter : <asynchronous suspension>
+11-21 16:25:39.417 11152 11152 E flutter : #1      BaseClient._sendUnstreamed (package:http/src/base_client.dart:93)
+11-21 16:25:39.417 11152 11152 E flutter : <asynchronous suspension>
+11-21 16:25:39.417 11152 11152 E flutter : #2      _withClient (package:http/http.dart:170)
+11-21 16:25:39.417 11152 11152 E flutter : <asynchronous suspension>
+11-21 16:25:39.417 11152 11152 E flutter : #3      _MyHomePageState._buscar (package:anatomia_app/main.dart:78)
+11-21 16:25:39.417 11152 11152 E flutter : <asynchronous suspension>
+11-21 16:25:39.417 11152 11152 E flutter :
+
+----- flutter logs -----
+flutter : AndroidManifest.xml could not be found.
+    + CategoryInfo          : NotSpecified: (AndroidManifest.xml could not be found.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Please check C:\Users\suear\OneDrive\Documentos\android\AndroidManifest.xml for errors.
+Showing motorola edge 50 neo logs:
+I/flutter (11152): [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+E/flutter (11152): [ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: ClientException with SocketException: Failed host lookup: 'example.com' (OS Error: No address associated with hostname, errno = 7), uri=https://example.com
+E/flutter (11152): #0      IOClient.send (package:http/src/io_client.dart:227)
+E/flutter (11152): <asynchronous suspension>
+E/flutter (11152): #1      BaseClient._sendUnstreamed (package:http/src/base_client.dart:93)
+E/flutter (11152): <asynchronous suspension>
+E/flutter (11152): #2      _withClient (package:http/http.dart:170)
+E/flutter (11152): <asynchronous suspension>
+E/flutter (11152): #3      _MyHomePageState._buscar (package:anatomia_app/main.dart:78)
+E/flutter (11152): <asynchronous suspension>
+E/flutter (11152):
+=================== C3 corrigido: COM a permissao INTERNET ===================
+
+PS> findstr /n /c:"uses-permission" android\app\src\main\AndroidManifest.xml
+2:    <uses-permission android:name="android.permission.INTERNET" />
+
+PS> flutter build apk --release
+Running Gradle task 'assembleRelease'...
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/suear/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Font asset "MaterialIcons-Regular.otf" was tree-shaken, reducing it from 1645184 to 1572 bytes (99.9% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+Running Gradle task 'assembleRelease'...                           34,6s
+Ô£ô Built build\app\outputs\flutter-apk\app-release.apk (44.4MB)
+
+PS> adb install -r build\app\outputs\flutter-apk\app-release.apk
+Performing Streamed Install
+Success
+
+PS> adb logcat -c
+
+PS> adb shell am start -n br.edu.unit.anatomia_app/.MainActivity
+Starting: Intent { cmp=br.edu.unit.anatomia_app/.MainActivity }
+
+>>> No celular: toque 1 VEZ no botao + FLUTUANTE e espere uns 5 segundos.
+
+----- adb logcat *:E  (filtrado por flutter/Exception para tirar o ruido de outros apps) -----
+11-21 16:26:51.104 11557 11557 E it.anatomia_app: [perfctl] 11557 11557 FPSGO ver:7
+11-21 16:26:51.104 11557 11557 E it.anatomia_app: [perfctl] 1 1 1 0
+
+----- adb logcat -s flutter -----
+--------- beginning of main
+11-21 16:26:51.040 11557 11580 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+11-21 16:26:56.766 11557 11557 I flutter : status: 200
+
+----- flutter logs -----
+flutter : AndroidManifest.xml could not be found.
+    + CategoryInfo          : NotSpecified: (AndroidManifest.xml could not be found.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Please check C:\Users\suear\OneDrive\Documentos\android\AndroidManifest.xml for errors.
+Showing motorola edge 50 neo logs:
+I/flutter (11557): [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+I/flutter (11557): status: 200
+=================== Restaurando o anatomia_app (copia de rascunho) ===================
+
+PS> flutter pub get
+Resolving dependencies...
+Downloading packages...
+  cupertino_icons 1.0.9 (2.0.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.4 available)
+These packages are no longer being depended on:
+- http 1.6.0
+- http_parser 4.1.2
+- typed_data 1.4.0
+- web 1.1.2
+Changed 4 dependencies!
+5 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+**********************
+Fim da transcrição do Windows PowerShell
+Hora de término: 20261121162722
+**********************
