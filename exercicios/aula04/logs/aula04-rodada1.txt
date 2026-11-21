@@ -1,0 +1,156 @@
+﻿**********************
+Início da transcrição do Windows PowerShell
+Hora de início: 20261121160637
+Nome de Usuário: SUE_ARRUDA\suear
+Executar como Usuário: SUE_ARRUDA\suear
+Nome da Configuração: 
+Computador: SUE_ARRUDA (Microsoft Windows NT 10.0.26300.0)
+Aplicativo Host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+ID do Processo: 14368
+PSVersion: 5.1.26100.9818
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9818
+BuildVersion: 10.0.26100.9818
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcrição iniciada, o arquivo de saída é C:\projetos\aula04-rodada1.txt
+PS C:\Users\suear> "===== A1 / LAB etapa 1: ficha do aparelho ====="
+===== A1 / LAB etapa 1: ficha do aparelho =====
+PS C:\Users\suear> adb version
+Android Debug Bridge version 1.0.41
+Version 37.0.1-15733141
+Installed as C:\Users\suear\AppData\Local\Android\sdk\platform-tools\adb.exe
+Running on Windows 10.0.26300
+PS C:\Users\suear> adb kill-server; adb start-server
+
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+PS C:\Users\suear> adb devices -l
+List of devices attached
+0088874915             unauthorized transport_id:1
+PS C:\Users\suear> adb shell getprop ro.product.model
+
+PS C:\Users\suear> adb shell getprop ro.product.manufacturer
+
+PS C:\Users\suear> adb shell getprop ro.build.version.release
+
+PS C:\Users\suear> adb shell getprop ro.build.version.sdk
+
+PS C:\Users\suear> adb shell wm size
+
+PS C:\Users\suear> adb shell wm density
+
+PS C:\Users\suear> "===== LAB etapa 2: checkpoint via adb ====="
+===== LAB etapa 2: checkpoint via adb =====
+PS C:\Users\suear> cd C:\projetos\checkpoint
+PS C:\projetos\checkpoint> flutter build apk --debug
+
+PS C:\projetos\checkpoint> Get-ChildItem build\app\outputs\flutter-apk\*.apk | Select-Object Name, @{n='MB';e={[math]::Round($_.Length/1MB,1)}}
+
+Name             MB
+----             --
+app-debug.apk 157,8
+
+
+PS C:\projetos\checkpoint> adb install -r build\app\outputs\flutter-apk\app-debug.apk
+
+PS C:\projetos\checkpoint> adb shell pm list packages | Select-String checkpoint
+
+package:br.edu.unit.checkpoint_intensivo
+package:br.edu.unit.checkpoint
+
+
+PS C:\projetos\checkpoint> adb shell am start -n br.edu.unit.checkpoint/.MainActivity
+
+PS C:\projetos\checkpoint> Start-Sleep 4
+PS C:\projetos\checkpoint> cmd /c "adb exec-out screencap -p > docs\prints\lab04-lista.png"
+
+PS C:\projetos\checkpoint> Get-Item docs\prints\lab04-lista.png | Select-Object Name, Length
+
+Name            Length
+----            ------
+lab04-lista.png 187381
+
+
+PS C:\projetos\checkpoint> adb shell pm clear br.edu.unit.checkpoint
+
+PS C:\projetos\checkpoint> adb shell am start -n br.edu.unit.checkpoint/.MainActivity
+
+PS C:\projetos\checkpoint> flutter build apk --release
+
+PS C:\projetos\checkpoint> Get-ChildItem build\app\outputs\flutter-apk\*.apk | Select-Object Name, @{n='MB';e={[math]::Round($_.Length/1MB,1)}}
+
+Name               MB
+----               --
+app-debug.apk   157,8
+app-release.apk  43,3
+
+
+PS C:\projetos\checkpoint> "===== LISTA parte B: anatomia_app (copia fora do repositorio) ====="
+===== LISTA parte B: anatomia_app (copia fora do repositorio) =====
+PS C:\projetos\checkpoint> robocopy C:\projetos\desenvolvimento-mobile-unit-2026-exercicios\exercicios\aula03\anatomia_app C:\projetos\anatomia_app /E /XD build .dart_tool /NFL /NDL /NJH /NJS | Out-Null
+PS C:\projetos\checkpoint> cd C:\projetos\anatomia_app
+PS C:\projetos\anatomia_app> flutter build apk --debug
+
+PS C:\projetos\anatomia_app> Get-ChildItem build\app\outputs\flutter-apk\*.apk | Select-Object Name, @{n='MB';e={[math]::Round($_.Length/1MB,1)}}
+
+Name             MB
+----             --
+app-debug.apk 143,6
+
+
+PS C:\projetos\anatomia_app> adb install -r build\app\outputs\flutter-apk\app-debug.apk
+
+PS C:\projetos\anatomia_app> adb shell pm list packages | Select-String unit
+
+package:br.edu.unit.checkpoint_intensivo
+package:br.edu.unit.locus_mobile
+package:br.edu.unit.meu_primeiro_app
+package:br.edu.unit.anatomia_app
+package:br.edu.unit.checkpoint
+
+
+PS C:\projetos\anatomia_app> adb shell monkey -p br.edu.unit.anatomia_app 1
+
+PS C:\projetos\anatomia_app> Start-Sleep 4
+PS C:\projetos\anatomia_app> cmd /c "adb exec-out screencap -p > $ex\prints\app-instalado.png"
+
+PS C:\projetos\anatomia_app> adb shell pm clear br.edu.unit.anatomia_app
+
+PS C:\projetos\anatomia_app> adb uninstall br.edu.unit.anatomia_app
+
+PS C:\projetos\anatomia_app> flutter build apk --release
+
+PS C:\projetos\anatomia_app> Get-ChildItem build\app\outputs\flutter-apk\*.apk | Select-Object Name, @{n='MB';e={[math]::Round($_.Length/1MB,1)}}
+
+Name               MB
+----               --
+app-debug.apk   143,6
+app-release.apk  43,4
+
+
+PS C:\projetos\anatomia_app> "===== LISTA B3: exec-out x shell ====="
+===== LISTA B3: exec-out x shell =====
+PS C:\projetos\anatomia_app> adb shell am start -n br.edu.unit.checkpoint/.MainActivity
+
+PS C:\projetos\anatomia_app> Start-Sleep 3
+PS C:\projetos\anatomia_app> cmd /c "adb exec-out screencap -p > $ex\prints\correto.png"
+
+PS C:\projetos\anatomia_app> cmd /c "adb shell screencap -p > $ex\prints\corrompido.png"
+
+PS C:\projetos\anatomia_app> Get-ChildItem "$ex\prints\correto.png","$ex\prints\corrompido.png" | Select-Object Name, Length
+
+Name           Length
+----           ------
+correto.png    200666
+corrompido.png 201401
+
+
+PS C:\projetos\anatomia_app> Stop-Transcript
+**********************
+Fim da transcrição do Windows PowerShell
+Hora de término: 20261121161140
+**********************

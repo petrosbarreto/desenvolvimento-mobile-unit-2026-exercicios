@@ -1,0 +1,135 @@
+﻿**********************
+Início da transcrição do Windows PowerShell
+Hora de início: 20261121162909
+Nome de Usuário: SUE_ARRUDA\suear
+Executar como Usuário: SUE_ARRUDA\suear
+Nome da Configuração: 
+Computador: SUE_ARRUDA (Microsoft Windows NT 10.0.26300.0)
+Aplicativo Host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File C:\Users\suear\Downloads\rodada3.ps1
+ID do Processo: 7924
+PSVersion: 5.1.26100.9818
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9818
+BuildVersion: 10.0.26100.9818
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcrição iniciada, o arquivo de saída é C:\projetos\aula04-rodada3.txt
+=================== C1: excecao no callback do botao (refeito) ===================
+
+PS> findstr /n /c:"Erro proposital C1" lib\main.dart
+72:      throw Exception('Erro proposital C1');
+
+PS> flutter build apk --debug
+Running Gradle task 'assembleDebug'...
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/suear/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Running Gradle task 'assembleDebug'...                             11,9s
+Ô£ô Built build\app\outputs\flutter-apk\app-debug.apk
+
+PS> adb install -r build\app\outputs\flutter-apk\app-debug.apk
+Performing Streamed Install
+Success
+
+PS> adb logcat -c
+
+PS> adb shell am start -n br.edu.unit.anatomia_app/.MainActivity
+Starting: Intent { cmp=br.edu.unit.anatomia_app/.MainActivity }
+
+>>> No celular: toque 5 VEZES no botao + QUADRADO do CANTO INFERIOR DIREITO (NAO o + redondo do contador no meio da tela). O texto do topo "Botao + do template tocado N vez(es)" deve subir ate 3 e parar. Repare se o app FECHA ou continua aberto.
+
+----- adb logcat *:E  (filtrado por flutter/Exception) -----
+11-21 16:29:32.765  8257 12739 E MFL     : PlayStoreAppInfo - Exception HTTP error fetching URL. Status=404, URL=[https://play.google.com/store/apps/details?id=br.edu.unit.anatomia_app] for br.edu.unit.anatomia_app
+11-21 16:29:35.568 12620 12620 E it.anatomia_app: [perfctl] 12620 12620 FPSGO ver:7
+11-21 16:29:35.568 12620 12620 E it.anatomia_app: [perfctl] 1 1 1 0
+11-21 16:29:36.500  1984  2392 E WifiStaIfaceAidlImpl: setDtimMultiplier failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+11-21 16:29:38.205 12401 13064 E GoogleApiManager: java.lang.SecurityException: Unknown calling package name 'com.google.android.gms'.
+11-21 16:29:38.205 12401 13064 E GoogleApiManager: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3339)
+11-21 16:29:38.205 12401 13064 E GoogleApiManager: 	at android.os.Parcel.createException(Parcel.java:3323)
+11-21 16:29:38.205 12401 13064 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:3306)
+11-21 16:29:38.205 12401 13064 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:3248)
+11-21 16:29:38.222 12401 13064 E GoogleApiManager: java.lang.SecurityException: Unknown calling package name 'com.google.android.gms'.
+11-21 16:29:38.222 12401 13064 E GoogleApiManager: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3339)
+11-21 16:29:38.222 12401 13064 E GoogleApiManager: 	at android.os.Parcel.createException(Parcel.java:3323)
+11-21 16:29:38.222 12401 13064 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:3306)
+11-21 16:29:38.222 12401 13064 E GoogleApiManager: 	at android.os.Parcel.readException(Parcel.java:3248)
+
+----- adb logcat -s flutter -----
+--------- beginning of main
+11-21 16:29:33.508 12620 12852 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+11-21 16:29:33.524 12620 12864 I flutter : The Dart VM service is listening on http://127.0.0.1:43483/fAbltZuQmIs=/
+(main.dart do rascunho restaurado)
+=================== D1: adb por Wi-Fi (Android 16 -> adb pair) ===================
+
+PS> adb devices -l
+List of devices attached
+0088874915             device product:vienna_g_sys model:motorola_edge_50_neo device:vienna transport_id:4
+
+
+>>> No celular: Configuracoes > Sistema > Opcoes do desenvolvedor > Depuracao sem fio
+>>> Ative a Depuracao sem fio e toque em 'Parear dispositivo com codigo de pareamento'.
+
+PS> adb pair 192.168.0.36:34061 307694
+Successfully paired to 192.168.0.36:34061 [guid=adb-0088874915-dsQuKO]
+
+>>> Feche a janela de pareamento. Na tela 'Depuracao sem fio' ha 'Endereco IP e porta'.
+
+PS> adb connect 192.168.0.36:40639
+connected to 192.168.0.36:40639
+
+PS> adb devices -l
+List of devices attached
+192.168.0.36:40639     device product:vienna_g_sys model:motorola_edge_50_neo device:vienna transport_id:6
+adb-0088874915-dsQuKO._adb-tls-connect._tcp device product:vienna_g_sys model:motorola_edge_50_neo device:vienna transport_id:5
+
+
+>>> Agora DESCONECTE O CABO USB do celular.
+
+PS> adb devices -l
+List of devices attached
+192.168.0.36:40639     device product:vienna_g_sys model:motorola_edge_50_neo device:vienna transport_id:6
+adb-0088874915-dsQuKO._adb-tls-connect._tcp device product:vienna_g_sys model:motorola_edge_50_neo device:vienna transport_id:5
+
+
+PS> flutter devices
+Found 4 connected devices:
+  motorola edge 50 neo (mobile) ÔÇó 192.168.0.36:40639 ÔÇó android-arm64  ÔÇó Android 16 (API 36)
+  Windows (desktop)             ÔÇó windows            ÔÇó windows-x64    ÔÇó Microsoft Windows [vers├åo 10.0.26300.9974]
+  Chrome (web)                  ÔÇó chrome             ÔÇó web-javascript ÔÇó Google Chrome 157.0.8103.80
+  Edge (web)                    ÔÇó edge               ÔÇó web-javascript ÔÇó Microsoft Edge 157.0.4341.46
+
+Found 1 wirelessly connected device:
+  motorola edge 50 neo (wireless) (mobile) ÔÇó adb-0088874915-dsQuKO._adb-tls-connect._tcp ÔÇó android-arm64 ÔÇó Android 16 (API 36)
+
+Run "flutter emulators" to list and start any available device emulators.
+
+If you expected another device to be detected, please run "flutter doctor" to diagnose potential issues. You may also try increasing the time to wait for connected devices with the "--device-timeout" flag. Visit https://flutter.dev/setup/ for troubleshooting tips.
+=================== App instalado e aberto SEM cabo ===================
+
+PS> adb -s 192.168.0.36:40639 install -r build\app\outputs\flutter-apk\app-debug.apk
+Performing Streamed Install
+Success
+
+PS> adb -s 192.168.0.36:40639 shell am start -n br.edu.unit.checkpoint/.MainActivity
+Starting: Intent { cmp=br.edu.unit.checkpoint/.MainActivity }
+
+PS> adb -s 192.168.0.36:40639 exec-out screencap -p > C:\projetos\desenvolvimento-mobile-unit-2026-exercicios\exercicios\aula04\prints\app-sem-cabo.png
+
+PS> dir C:\projetos\desenvolvimento-mobile-unit-2026-exercicios\exercicios\aula04\prints\app-sem-cabo.png
+ O volume na unidade C é Windows
+ O Número de Série do Volume é 1404-B98A
+
+ Pasta de C:\projetos\desenvolvimento-mobile-unit-2026-exercicios\exercicios\aula04\prints
+
+21/11/2026  16:36           200.160 app-sem-cabo.png
+               1 arquivo(s)        200.160 bytes
+               0 pasta(s)   16.647.675.904 bytes disponíveis
+**********************
+Fim da transcrição do Windows PowerShell
+Hora de término: 20261121163653
+**********************

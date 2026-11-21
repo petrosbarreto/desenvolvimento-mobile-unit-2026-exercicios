@@ -1,0 +1,145 @@
+﻿**********************
+Início da transcrição do Windows PowerShell
+Hora de início: 20261121161655
+Nome de Usuário: SUE_ARRUDA\suear
+Executar como Usuário: SUE_ARRUDA\suear
+Nome da Configuração: 
+Computador: SUE_ARRUDA (Microsoft Windows NT 10.0.26300.0)
+Aplicativo Host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+ID do Processo: 14368
+PSVersion: 5.1.26100.9818
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9818
+BuildVersion: 10.0.26100.9818
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcrição iniciada, o arquivo de saída é C:\projetos\aula04-rodada1b.txt
+PS C:\projetos\anatomia_app> function x($c) { ""; "PS> $c"; cmd /c "$c 2>&1" | Out-String -Stream }
+PS C:\projetos\anatomia_app> "===== A1: ficha do aparelho ====="
+===== A1: ficha do aparelho =====
+PS C:\projetos\anatomia_app> x "adb version"
+
+PS> adb version
+Android Debug Bridge version 1.0.41
+Version 37.0.1-15733141
+Installed as C:\Users\suear\AppData\Local\Android\sdk\platform-tools\adb.exe
+Running on Windows 10.0.26300
+PS C:\projetos\anatomia_app> x "adb devices -l"
+
+PS> adb devices -l
+List of devices attached
+0088874915             device product:vienna_g_sys model:motorola_edge_50_neo device:vienna transport_id:4
+
+PS C:\projetos\anatomia_app> x "adb shell getprop ro.product.model"
+
+PS> adb shell getprop ro.product.model
+motorola edge 50 neo
+PS C:\projetos\anatomia_app> x "adb shell getprop ro.product.manufacturer"
+
+PS> adb shell getprop ro.product.manufacturer
+motorola
+PS C:\projetos\anatomia_app> x "adb shell getprop ro.build.version.release"
+
+PS> adb shell getprop ro.build.version.release
+16
+PS C:\projetos\anatomia_app> x "adb shell getprop ro.build.version.sdk"
+
+PS> adb shell getprop ro.build.version.sdk
+36
+PS C:\projetos\anatomia_app> x "adb shell wm size"
+
+PS> adb shell wm size
+Physical size: 1200x2670
+PS C:\projetos\anatomia_app> x "adb shell wm density"
+
+PS> adb shell wm density
+Physical density: 450
+PS C:\projetos\anatomia_app> "===== B1: ciclo completo (anatomia_app) ====="
+===== B1: ciclo completo (anatomia_app) =====
+PS C:\projetos\anatomia_app> cd C:\projetos\anatomia_app
+PS C:\projetos\anatomia_app> x "flutter build apk --debug"
+
+PS> flutter build apk --debug
+Running Gradle task 'assembleDebug'...
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/suear/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Running Gradle task 'assembleDebug'...                             13,8s
+Ô£ô Built build\app\outputs\flutter-apk\app-debug.apk
+PS C:\projetos\anatomia_app> x "dir build\app\outputs\flutter-apk\*.apk"
+
+PS> dir build\app\outputs\flutter-apk\*.apk
+ O volume na unidade C é Windows
+ O Número de Série do Volume é 1404-B98A
+
+ Pasta de C:\projetos\anatomia_app\build\app\outputs\flutter-apk
+
+21/11/2026  16:17       150.558.944 app-debug.apk
+21/11/2026  16:11        45.552.440 app-release.apk
+               2 arquivo(s)    196.111.384 bytes
+               0 pasta(s)   16.688.181.248 bytes disponíveis
+PS C:\projetos\anatomia_app> x "adb install -r build\app\outputs\flutter-apk\app-debug.apk"
+
+PS> adb install -r build\app\outputs\flutter-apk\app-debug.apk
+Performing Streamed Install
+Success
+PS C:\projetos\anatomia_app> x "adb shell pm list packages | findstr unit"
+
+PS> adb shell pm list packages | findstr unit
+package:br.edu.unit.checkpoint_intensivo
+package:br.edu.unit.locus_mobile
+package:br.edu.unit.meu_primeiro_app
+package:br.edu.unit.anatomia_app
+package:br.edu.unit.checkpoint
+PS C:\projetos\anatomia_app> x "adb shell monkey -p br.edu.unit.anatomia_app 1"
+
+PS> adb shell monkey -p br.edu.unit.anatomia_app 1
+  bash arg: -p
+  bash arg: br.edu.unit.anatomia_app
+  bash arg: 1
+args: [-p, br.edu.unit.anatomia_app, 1]
+ arg: "-p"
+ arg: "br.edu.unit.anatomia_app"
+ arg: "1"
+data="br.edu.unit.anatomia_app"
+Events injected: 1
+## Network stats: elapsed time=56ms (0ms mobile, 0ms wifi, 56ms not connected)
+PS C:\projetos\anatomia_app> Start-Sleep 4
+PS C:\projetos\anatomia_app> x "adb exec-out screencap -p > $ex\prints\app-instalado.png"
+
+PS> adb exec-out screencap -p > C:\projetos\desenvolvimento-mobile-unit-2026-exercicios\exercicios\aula04\prints\app-instalado.png
+PS C:\projetos\anatomia_app> x "adb shell pm clear br.edu.unit.anatomia_app"
+
+PS> adb shell pm clear br.edu.unit.anatomia_app
+Success
+PS C:\projetos\anatomia_app> x "adb uninstall br.edu.unit.anatomia_app"
+
+PS> adb uninstall br.edu.unit.anatomia_app
+Success
+PS C:\projetos\anatomia_app> "===== B3: tamanhos ====="
+===== B3: tamanhos =====
+PS C:\projetos\anatomia_app> x "dir $ex\prints\correto.png $ex\prints\corrompido.png"
+
+PS> dir C:\projetos\desenvolvimento-mobile-unit-2026-exercicios\exercicios\aula04\prints\correto.png C:\projetos\desenvolvimento-mobile-unit-2026-exercicios\exercicios\aula04\prints\corrompido.png
+ O volume na unidade C é Windows
+ O Número de Série do Volume é 1404-B98A
+
+ Pasta de C:\projetos\desenvolvimento-mobile-unit-2026-exercicios\exercicios\aula04\prints
+
+21/11/2026  16:11           200.666 correto.png
+
+ Pasta de C:\projetos\desenvolvimento-mobile-unit-2026-exercicios\exercicios\aula04\prints
+
+21/11/2026  16:11           201.401 corrompido.png
+               2 arquivo(s)        402.067 bytes
+               0 pasta(s)   16.688.107.520 bytes disponíveis
+PS C:\projetos\anatomia_app> Stop-Transcript
+**********************
+Fim da transcrição do Windows PowerShell
+Hora de término: 20261121161822
+**********************
